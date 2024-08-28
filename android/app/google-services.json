@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1086022332299",
+    "project_id": "millima-36de9",
+    "storage_bucket": "millima-36de9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086022332299:android:aa83fe6e9658689bf0898e",
+        "android_client_info": {
+          "package_name": "com.example.uep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086022332299-c684vqsf9kue6lb9hu5qmou6aq5hb766.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uep",
+            "certificate_hash": "11531838721c8fd213057592b837d221661e8711"
+          }
+        },
+        {
+          "client_id": "1086022332299-0gpbgrj96lqe5dbdnmfournb2kqa4e6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnwET3eT-vgdpdPKApHSHw4MlGChRUb4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086022332299-0gpbgrj96lqe5dbdnmfournb2kqa4e6g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086022332299-l9q7t9nl66eb21dgd1nlhmra6mm96ell.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.uep"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
