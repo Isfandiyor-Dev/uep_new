@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uep/bloc/users/users_bloc.dart';
-import 'package:uep/bloc/users/users_event.dart';
-import 'package:uep/bloc/users/users_state.dart';
 import 'package:uep/models/user_model.dart';
 import 'package:uep/ui/admin/pages/users/users_tabs/users_tabs.dart';
 import 'package:uep/ui/admin/widget/user_page_shimmer.dart';

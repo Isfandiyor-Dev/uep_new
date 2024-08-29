@@ -9,33 +9,33 @@ class WorkingDayService {
     String url = "/api/working-hours";
     try {
       final response = await dio.get(url);
-      print("Bu get Working day response: $response");
+      
       return (response.data["data"] as List<dynamic>)
           .map((e) => WorkingDay.fromJson(e))
           .toList();
     } on DioException catch (e) {
-      print("Get Working Day Dio Exception: $e");
+      
       throw e.response?.data;
     } catch (e) {
-      print("Get Working day Error: $e");
-      throw e;
+      
+      rethrow;
     }
   }
 
   Future<void> updateWorkingDay(List<Map<String, dynamic>> data) async {
     String url = "/api/working-hours";
     try {
-      final response = await dio.get(
+       await dio.get(
         url,
         data: {"working_hours": data},
       );
-      print("Bu Update Working day response: $response");
+      
     } on DioException catch (e) {
-      print("Update Working Day Dio Exception: $e");
+      
       throw e.response?.data;
     } catch (e) {
-      print("Update Working day Error: $e");
-      throw e;
+      
+      rethrow;
     }
   }
 }

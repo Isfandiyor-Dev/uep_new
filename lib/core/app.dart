@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uep/bloc/auth/auth_bloc.dart';
-import 'package:uep/bloc/auth/auth_state.dart';
 import 'package:uep/core/auth_gate.dart';
 import 'package:uep/ui/auth/login/login_page.dart';
 

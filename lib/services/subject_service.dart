@@ -9,15 +9,15 @@ class SubjectService {
     String url = "/api/subjects";
     try {
       final response = await dio.get(url);
-      print("Subjects Response: $response");
+      
       return (response.data["data"] as List)
           .map((e) => Subject.fromJson(e))
           .toList();
     } on DioException catch (e) {
-      print("Error Dio all ${e.response?.data}");
+      
       throw e.response?.data;
     } catch (e) {
-      print("Error all $e");
+      
       rethrow;
     }
   }
@@ -25,13 +25,13 @@ class SubjectService {
   Future<void> addSubject(Map<String, dynamic> data) async {
     String url = "/api/subjects";
     try {
-      final response = await dio.post(url, data: data);
-      print("Add Subject Response: $response");
+     await dio.post(url, data: data);
+      
     } on DioException catch (e) {
-      print("Error Dio Add ${e.response?.data}");
+      
       throw e.response?.data;
     } catch (e) {
-      print("Error Add $e");
+      
       rethrow;
     }
   }
@@ -40,13 +40,13 @@ class SubjectService {
     String url = "/api/subjects/$id";
     try {
       final response = await dio.get(url);
-      print("One Subject Response: $response");
+      
       return response.data["data"];
     } on DioException catch (e) {
-      print("Error Dio one ${e.response?.data}");
+      
       throw e.response?.data;
     } catch (e) {
-      print("Error one $e");
+      
       rethrow;
     }
   }
@@ -54,13 +54,13 @@ class SubjectService {
   Future<void> editSubject(int id, Map<String, dynamic> data) async {
     String url = "/api/subjects/$id";
     try {
-      final response = await dio.put(url, data: data);
-      print("Edit Subject Response: $response");
+      await dio.put(url, data: data);
+      
     } on DioException catch (e) {
-      print("Error Dio edit ${e.response?.data}");
+      
       throw e.response?.data;
     } catch (e) {
-      print("Error edit $e");
+      
       rethrow;
     }
   }
@@ -68,13 +68,13 @@ class SubjectService {
   Future<void> deleteSubject(int id) async {
     String url = "/api/subjects/$id";
     try {
-      final response = await dio.delete(url);
-      print("Delete Subject Response: $response");
+    await dio.delete(url);
+      
     } on DioException catch (e) {
-      print("Error Dio delete ${e.response?.data}");
+      
       throw e.response?.data;
     } catch (e) {
-      print("Error delete $e");
+      
       rethrow;
     }
   }

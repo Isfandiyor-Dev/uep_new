@@ -11,16 +11,14 @@ class ProfileService {
   Future<Map<String, dynamic>?> getUser() async {
     String url = "/api/user";
     try {
-      final token = await LocalDb.getIdToken();
-      print("Bu token: $token");
+      await LocalDb.getIdToken();
+
       final response = await dioClient.dio.get(url);
 
       return response.data;
     } on DioException catch (e) {
-      print("Dio Xatoligi: ${e.response?.data}");
       throw e.response?.data;
     } catch (e) {
-      print("Get Userda Xatolik: $e");
       rethrow;
     }
   }
@@ -28,8 +26,7 @@ class ProfileService {
   Future<bool> updateProfile(Map<String, dynamic> data, {File? image}) async {
     String url = "/api/profile/update";
     try {
-      final token = await LocalDb.getIdToken();
-      print("Bu token: $token");
+      await LocalDb.getIdToken();
 
       FormData formData = FormData.fromMap(data);
 
@@ -39,14 +36,9 @@ class ProfileService {
           "photo",
           await MultipartFile.fromFile(image.path, filename: "$imageUrl.jpg"),
         ));
-        print("Image path: ${image.path}");
       }
 
-      print("Bu data: $data");
-
       final response = await dioClient.dio.post(url, data: formData);
-
-      print("Bu response update: ${response.data}");
 
       if (response.statusCode == 200) {
         return true;
@@ -54,10 +46,8 @@ class ProfileService {
         return false;
       }
     } on DioException catch (e) {
-      print("Update'da Dio Xatoligi: ${e.response?.data}");
       throw e.response?.data;
     } catch (e) {
-      print("Update'da Xatolik: $e");
       rethrow;
     }
   }

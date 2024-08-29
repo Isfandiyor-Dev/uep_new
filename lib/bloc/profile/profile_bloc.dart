@@ -1,8 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uep/bloc/profile/profile_event.dart';
-import 'package:uep/bloc/profile/profile_state.dart';
 import 'package:uep/models/user_model.dart';
 import 'package:uep/services/profile_service.dart';
+import 'package:equatable/equatable.dart';
+import 'dart:io';
+
+part 'profile_event.dart';
+part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileService profileService;

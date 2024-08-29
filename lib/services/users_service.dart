@@ -10,17 +10,17 @@ class UsersService {
 
     try {
       final response = await dioClient.dio.get(url);
-      print("Users get response: $response");
+      
       // Dynamic ro'yxatni Map<String, dynamic> ga o'zgartirish
       List<dynamic> users = response.data["data"];
       return users
           .map((e) => UserModel.fromJson(e as Map<String, dynamic>))
           .toList();
-    } on DioException catch (e) {
-      print("User get dio Error: ${e.response?.data}");
+    } on DioException {
+      
       rethrow;
     } catch (e) {
-      print("Users get Error: $e");
+      
       rethrow;
     }
   }

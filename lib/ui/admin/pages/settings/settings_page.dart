@@ -18,11 +18,11 @@ class SettingsPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => WorkingDaysPage(),
+                    builder: (context) => const WorkingDaysPage(),
                   ));
             },
-            leading: Icon(Icons.watch_later_rounded),
-            title: Text("Working Day"),
+            leading: const Icon(Icons.watch_later_rounded),
+            title: const Text("Working Day"),
           ),
         ],
       ),

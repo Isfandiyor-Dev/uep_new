@@ -1,7 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uep/bloc/users/users_event.dart';
-import 'package:uep/bloc/users/users_state.dart';
+import 'package:uep/models/user_model.dart';
 import 'package:uep/services/users_service.dart';
+import 'package:equatable/equatable.dart';
+
+part 'users_event.dart';
+part 'users_state.dart';
 
 class UsersBloc extends Bloc<UsersEvent, UsersState> {
   final UsersService usersService;

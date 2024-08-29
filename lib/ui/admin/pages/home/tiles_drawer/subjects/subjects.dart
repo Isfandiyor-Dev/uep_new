@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uep/bloc/subject/subject_bloc.dart';
-import 'package:uep/bloc/subject/subject_event.dart';
-import 'package:uep/bloc/subject/subject_state.dart';
 import 'package:uep/models/subject_model.dart';
 import 'package:uep/ui/admin/pages/home/tiles_drawer/subjects/manage_subject.dart';
 import 'package:uep/ui/admin/widget/shimmer_group_loading.dart';
@@ -47,6 +45,7 @@ class _SubjectsState extends State<Subjects> {
                 );
 
                 if (name != null) {
+                  // ignore: use_build_context_synchronously
                   context.read<SubjectBloc>().add(
                         AddSubjectEvent({"name": name}),
                       );

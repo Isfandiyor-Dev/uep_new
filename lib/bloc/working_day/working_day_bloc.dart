@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uep/bloc/working_day/working_day_event.dart';
-import 'package:uep/bloc/working_day/working_day_state.dart';
 import 'package:uep/models/working_day_model.dart';
 import 'package:uep/services/working_day_service.dart';
+import 'package:equatable/equatable.dart';
+
+part 'working_day_event.dart';
+part 'working_day_state.dart';
 
 class WorkingDayBloc extends Bloc<WorkingDayEvent, WorkingDayState> {
   final WorkingDayService workingDayService;

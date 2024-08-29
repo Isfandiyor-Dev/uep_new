@@ -5,6 +5,7 @@ class UsersPageShimmer extends StatefulWidget {
   const UsersPageShimmer({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _UsersPageShimmerState createState() => _UsersPageShimmerState();
 }
 
@@ -28,7 +29,7 @@ class _UsersPageShimmerState extends State<UsersPageShimmer>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Users"),
+        title: const Text("Users"),
         centerTitle: true,
         bottom: TabBar(
           controller: _tabController,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uep/bloc/group/group_bloc.dart';
-import 'package:uep/bloc/group/group_event.dart';
 import 'package:uep/models/subject_model.dart';
 import 'package:uep/models/user_model.dart';
 import 'package:uep/ui/admin/pages/groups/add_group/choose_subject.dart';

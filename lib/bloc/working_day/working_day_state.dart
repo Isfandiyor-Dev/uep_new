@@ -1,5 +1,6 @@
-import 'package:equatable/equatable.dart';
-import 'package:uep/models/working_day_model.dart';
+part of "working_day_bloc.dart";
+
+
 
 abstract class WorkingDayState extends Equatable {
   const WorkingDayState();

@@ -9,16 +9,14 @@ class GroupService {
     String url = "/api/groups";
     try {
       final response = await dio.get(url);
-      print("Bu response: $response");
+
       List<dynamic> data = response.data["data"];
       return data
           .map((e) => Group.fromJson((e as Map<String, dynamic>)))
           .toList();
-    } on DioException catch (e) {
-      print("Group get dio Error: ${e.response?.data}");
+    } on DioException {
       rethrow;
     } catch (e) {
-      print("Groups get Error: $e");
       rethrow;
     }
   }
@@ -27,16 +25,14 @@ class GroupService {
     String url = "/api/student/groups";
     try {
       final response = await dio.get(url);
-      print("Bu response: $response");
+
       List<dynamic> data = response.data["data"];
       return data
           .map((e) => Group.fromJson((e as Map<String, dynamic>)))
           .toList();
-    } on DioException catch (e) {
-      print("Group get dio Error: ${e.response?.data}");
+    } on DioException {
       rethrow;
     } catch (e) {
-      print("Groups get Error: $e");
       rethrow;
     }
   }
@@ -44,13 +40,26 @@ class GroupService {
   Future<void> addGroup(Map<String, dynamic> data) async {
     String url = "/api/groups";
     try {
-      final response = await dio.post(url, data: data);
-      print("Bu add group response: $response");
-    } on DioException catch (e) {
-      print("Group add dio Error: ${e.response?.data}");
+      await dio.post(url, data: data);
+    } on DioException {
       rethrow;
     } catch (e) {
-      print("Groups add Error: $e");
+      rethrow;
+    }
+  }
+
+  Future<void> addStudentToGroup(
+      {required int groupId, required List<int> studentsId}) async {
+    String url = '/api/groups/$groupId/students';
+    try {
+      final response = await dio.post(url, data: {
+        "students": studentsId,
+      });
+
+      print("Response add students to group: $response");
+    } on DioException {
+      rethrow;
+    } catch (e) {
       rethrow;
     }
   }

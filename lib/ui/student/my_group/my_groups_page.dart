@@ -1,36 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uep/bloc/group/group_bloc.dart';
+import 'package:uep/bloc/blocs.dart';
 import 'package:uep/models/group_model.dart';
-import 'package:uep/ui/admin/pages/groups/add_group/add_group.dart';
 import 'package:uep/ui/admin/pages/groups/group_detail/group_detail.dart';
 import 'package:uep/ui/admin/widget/shimmer_users_loading.dart';
 
-class GroupsPage extends StatelessWidget {
-  const GroupsPage({super.key});
+class MyGroupsPage extends StatelessWidget {
+  const MyGroupsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: const Text("Groups"),
+        title: const Text("My Groups"),
         centerTitle: true,
-        backgroundColor: Colors.grey[300],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const AddGroupPage(),
-            ),
-          );
-        },
-        child: const Icon(Icons.add),
       ),
       body: BlocBuilder<GroupBloc, GroupState>(
-        bloc: context.read<GroupBloc>()..add(GetGroups()),
+        bloc: context.read<GroupBloc>()..add(GetStudentGroups()),
         builder: (context, state) {
           if (state is GroupLoading) {
             return const ShimmerUsersLoading();

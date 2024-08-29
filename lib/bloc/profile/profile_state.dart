@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:uep/models/user_model.dart';
+part of "profile_bloc.dart";
 
 abstract class ProfileState extends Equatable {
   const ProfileState();

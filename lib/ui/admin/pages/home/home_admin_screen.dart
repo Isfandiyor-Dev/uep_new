@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uep/bloc/auth/auth_bloc.dart';
-import 'package:uep/bloc/auth/auth_event.dart';
-import 'package:uep/bloc/auth/auth_state.dart';
 import 'package:uep/bloc/profile/profile_bloc.dart';
-import 'package:uep/bloc/profile/profile_event.dart';
-import 'package:uep/bloc/profile/profile_state.dart';
 import 'package:uep/models/user_model.dart';
 import 'package:uep/ui/admin/pages/home/drawer.dart';
 import 'package:uep/ui/auth/login/login_page.dart';
 import 'package:uep/ui/global_screens/profile/profile_page.dart';
-import 'package:uep/ui/global_screens/widgets/shimmer_profile_loading.dart';
+import 'package:uep/ui/global_screens/widgets/shimmer_home_loading.dart';
 
 class HomeAdminScreen extends StatelessWidget {
   const HomeAdminScreen({super.key});

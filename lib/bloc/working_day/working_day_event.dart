@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of "working_day_bloc.dart";
 
 sealed class WorkingDayEvent extends Equatable {
   const WorkingDayEvent();

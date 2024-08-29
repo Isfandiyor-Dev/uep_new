@@ -26,7 +26,7 @@ class _RoleDialogState extends State<RoleDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Your Role"),
+      title: const Text("Your Role"),
       content: DropdownButtonFormField<int>(
         value: roleId,
         decoration: const InputDecoration(

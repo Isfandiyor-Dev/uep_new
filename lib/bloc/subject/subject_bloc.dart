@@ -1,7 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uep/bloc/subject/subject_event.dart';
-import 'package:uep/bloc/subject/subject_state.dart';
+import 'package:uep/models/subject_model.dart';
+
 import 'package:uep/services/subject_service.dart';
+import 'package:equatable/equatable.dart';
+
+part 'subject_event.dart';
+part 'subject_state.dart';
+
 
 class SubjectBloc extends Bloc<SubjectEvent, SubjectState> {
   final SubjectService subjectService;

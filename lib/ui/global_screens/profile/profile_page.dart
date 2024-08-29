@@ -5,9 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uep/bloc/profile/profile_bloc.dart';
-import 'package:uep/bloc/profile/profile_event.dart';
-import 'package:uep/bloc/profile/profile_state.dart';
 import 'package:uep/models/user_model.dart';
+import 'package:uep/ui/admin/pages/settings/settings_page.dart';
 import 'package:uep/utils/validators.dart';
 import 'package:uep/ui/global_screens/widgets/custom_text_field.dart';
 
@@ -47,19 +46,15 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void onTapSave() async {
     final BuildContext context = this.context;
-    if (image != null) {
-      BlocProvider.of<ProfileBloc>(context).add(
-        EditProfile(
-          data: {
-            "name": nameController.text,
-            "phone": phoneController.text,
-          },
-          image: image,
-        ),
-      );
-    } else {
-      print("Image nullga teng");
-    }
+    BlocProvider.of<ProfileBloc>(context).add(
+      EditProfile(
+        data: {
+          "name": nameController.text,
+          "phone": phoneController.text,
+        },
+        image: image,
+      ),
+    );
   }
 
   Future<void> _pickImage() async {
@@ -116,7 +111,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: FloatingActionButton(
                     heroTag: "settings",
                     backgroundColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SettingsPage(),
+                        ),
+                      );
+                    },
                     child: const Icon(
                       CupertinoIcons.settings,
                       size: 25,
@@ -144,64 +146,71 @@ class _ProfilePageState extends State<ProfilePage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    BlocBuilder<ProfileBloc, ProfileState>(
-                        builder: (context, state) {
-                      if (state is ProfileLoading) {
-                        return const Center(
-                          child: CircularProgressIndicator.adaptive(),
-                        );
-                      } else if (state is ProfileError) {
-                        return Center(
-                          child: Text("Xatolik yuz berdi: ${state.message}"),
-                        );
-                      } else if (state is ProfileLoaded) {
-                        UserModel userModel = state.user;
-                        nameController.text = userModel.name;
-                        phoneController.text = userModel.phone ?? "";
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundColor: Colors.teal,
-                              backgroundImage: image != null
-                                  ? FileImage(image!)
-                                  : userModel.photo != null
-                                      ? NetworkImage(
-                                          "http://millima.flutterwithakmaljon.uz/storage/avatars/${userModel.photo!}")
-                                      : null,
-                              child: image == null
-                                  ? !readOnly
-                                      ? IconButton(
-                                          onPressed: _pickImage,
-                                          icon: const Icon(
-                                            Icons.camera_alt_rounded,
-                                            color: Colors.white,
-                                          ),
-                                        )
-                                      : null
-                                  : null,
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  readOnly = !readOnly;
-                                });
-                              },
-                              icon: SvgPicture.asset(
-                                "assets/icons/edit.svg",
-                                width: 30,
-                                height: 30,
+                    BlocConsumer<ProfileBloc, ProfileState>(
+                      listener: (context, state) {
+                        if (state is ProfileLoaded) {
+                          UserModel userModel = state.user;
+                          setState(() {
+                            nameController.text = userModel.name;
+                            phoneController.text = userModel.phone ?? "";
+                          });
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state is ProfileLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator.adaptive(),
+                          );
+                        } else if (state is ProfileError) {
+                          return Center(
+                            child: Text("Xatolik yuz berdi: ${state.message}"),
+                          );
+                        } else if (state is ProfileLoaded) {
+                          UserModel userModel = state.user;
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CircleAvatar(
+                                radius: 50,
+                                backgroundColor: Colors.teal,
+                                backgroundImage: image != null
+                                    ? FileImage(image!)
+                                    : userModel.photo != null
+                                        ? NetworkImage(
+                                            "http://millima.flutterwithakmaljon.uz/storage/avatars/${userModel.photo!}")
+                                        : null,
+                                child: image == null
+                                    ? !readOnly
+                                        ? IconButton(
+                                            onPressed: _pickImage,
+                                            icon: const Icon(
+                                              Icons.camera_alt_rounded,
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        : null
+                                    : null,
                               ),
-                            ),
-                          ],
-                        );
-                      } else {
-                        // Default holat
-                        return const SizedBox.shrink();
-                      }
-                    }),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    readOnly = !readOnly;
+                                  });
+                                },
+                                icon: SvgPicture.asset(
+                                  "assets/icons/edit.svg",
+                                  width: 30,
+                                  height: 30,
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      },
+                    ),
                     const SizedBox(height: 25),
                     CustomTextField(
                       labelText: "Name",

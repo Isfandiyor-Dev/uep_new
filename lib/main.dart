@@ -1,21 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uep/bloc/auth/auth_bloc.dart';
-import 'package:uep/bloc/auth/auth_event.dart';
-import 'package:uep/bloc/group/group_bloc.dart';
-import 'package:uep/bloc/profile/profile_bloc.dart';
-import 'package:uep/bloc/subject/subject_bloc.dart';
-import 'package:uep/bloc/users/users_bloc.dart';
-import 'package:uep/bloc/working_day/working_day_bloc.dart';
+import 'bloc/blocs.dart';
 import 'package:uep/core/app.dart';
 import 'package:uep/firebase_options.dart';
-import 'package:uep/services/auth_service.dart';
-import 'package:uep/services/group_service.dart';
-import 'package:uep/services/profile_service.dart';
-import 'package:uep/services/subject_service.dart';
-import 'package:uep/services/users_service.dart';
-import 'package:uep/services/working_day_service.dart';
+import 'services/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

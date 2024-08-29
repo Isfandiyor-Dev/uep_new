@@ -1,11 +1,8 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:uep/bloc/auth/auth_bloc.dart';
-import 'package:uep/bloc/auth/auth_event.dart';
-import 'package:uep/bloc/auth/auth_state.dart';
 import 'package:uep/ui/auth/register/register_page.dart';
 import 'package:uep/utils/validators.dart';
 import 'package:uep/ui/auth/widgets/social_auth_buttons.dart';

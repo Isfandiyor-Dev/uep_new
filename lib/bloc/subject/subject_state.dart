@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:uep/models/subject_model.dart';
+part of "subject_bloc.dart";
 
 abstract class SubjectState extends Equatable {
   const SubjectState();

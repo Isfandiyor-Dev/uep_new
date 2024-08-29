@@ -1,10 +1,13 @@
 // import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:uep/services/auth_service.dart';
 // import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
-import 'package:uep/bloc/auth/auth_event.dart';
-import 'package:uep/bloc/auth/auth_state.dart';
-import 'package:uep/services/auth_service.dart';
+part 'auth_event.dart';
+part 'auth_state.dart';
+
+
 
 enum SocialLoginTypes { google, facebook, github }
 
@@ -34,7 +37,7 @@ class AuthenticationBloc
 
     final bool isAuthenticated = await authService.isAuthenticated();
 
-    print("Auth holati: $isAuthenticated");
+    
     if (isAuthenticated) {
       emit(AuthenticationAuthenticated());
     } else {
@@ -55,8 +58,8 @@ class AuthenticationBloc
   //         final googleSignIn = GoogleSignIn(scopes: scopes);
   //         final googleUser = await googleSignIn.signIn();
 
-  //         print("Bu name: ${googleUser?.displayName}");
-  //         print("Bu email: ${googleUser?.email}");
+  //         
+  //         
 
   //         if (googleUser != null) {
   //           data = {
@@ -94,12 +97,12 @@ class AuthenticationBloc
   //             ),
   //           );
 
-  //           print('Access token: ${result.accessToken}');
+  //           
   //           Map<String, dynamic> data =
   //               await authService.fetchGitHubUserProfile(result.accessToken!);
   //           authService.socialLogin(data);
   //         } catch (e) {
-  //           print('Xatolik: $e');
+  //           
   //         }
   //       default:
   //         return;
@@ -112,7 +115,7 @@ class AuthenticationBloc
   //       throw ('User not found');
   //     }
   //   } catch (e) {
-  //     print("Xatolik s.a: $e");
+  //     
   //     // emit(AuthenticationFailure(error: ));
   //   }
   // }
