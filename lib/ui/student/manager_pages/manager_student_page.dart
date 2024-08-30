@@ -13,6 +13,7 @@ class ManageStudentPage extends StatefulWidget {
 
 class _ManageStudentPageState extends State<ManageStudentPage> {
   int currentItem = 0;
+
   List<Widget> pages = [
     const HomeStudentPage(),
     const MyGroupsPage(),
